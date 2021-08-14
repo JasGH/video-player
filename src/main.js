@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 
 Vue.config.productionTip = false
+require("video.js/dist/video-js.css");
+
 
 new Vue({
   router,
