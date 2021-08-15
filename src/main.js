@@ -5,7 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
-require("video.js/dist/video-js.css");
+
 
 
 new Vue({

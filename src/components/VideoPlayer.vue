@@ -1,6 +1,5 @@
 <template>
-  <div>
-
+  <div class="vPlayer">
     <v-btn
         class="vPlayer-drawer-btn"
         text
@@ -46,13 +45,14 @@
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
-    <video ref="videoPlayer" class="video-js vjs-fluid vjs-big-play-centered " ></video>
+    <video ref="videoPlayer" class="video-js vjs-fluid vjs-big-play-centered" ></video>
   </div>
 </template>
 
 <script>
 import videojs from 'video.js';
 import fa from 'video.js/dist/lang/fa.json';
+require("video.js/dist/video-js.css");
 // The following registers the plugin with `videojs`
 require('@silvermine/videojs-quality-selector')(videojs);
 require('@silvermine/videojs-quality-selector/dist/css/quality-selector.css')
@@ -69,24 +69,13 @@ export default {
     timePoints : {
       type :Array,
       default (){
-        return [
-          {
-            title : 'تست ۱',
-            time : 18
-          },
-          {
-            title : 'تست ۲',
-            time : 188
-          },
-          {
-            title : 'تست ۳',
-            time : 400
-          },
-          {
-            title : 'تست ۴',
-            time : 800
-          },
-        ]
+        return []
+      }
+    },
+    poster : {
+      type : String,
+      default (){
+        return ''
       }
     }
   },
@@ -109,42 +98,16 @@ export default {
           },
           autoplay: true,
           controls: true,
-          playbackRates: [0.2, 0.5, 1, 1.5, 2,3,4],
-          // plugins: {
-          //   hlsQualitySelector: {`
-          //     displayCurrentQuality: true
-          //   }
-          // },
+          playbackRates: [0.5, 0.75, 1, 1.25 , 1.5, 1.75 , 2 ,4],
           nativeControlsForTouch : true,
-          sources: [
-            {
-              src:
-                  "https://cdn.alaatv.com/media/1042/HD_720p/1042003xxxx.mp4",
-              type: 'video/mp4',
-              label: '720p',
-              selected: true,
-            },
-            {
-              src:
-                  "https://cdn.alaatv.com/media/1042/hq/1042003xxxx.mp4",
-              type: 'video/mp4',
-              label: '480P',
-              selected: true,
-            },
-            {
-              src:
-                  "https://cdn.alaatv.com/media/1042/240p/1042003xxxx.mp4",
-              type: 'video/mp4',
-              label: '240p',
-              selected: true,
-            }
-          ]
+          sources: [],
+          poster : null
         }
       };
     },
   created() {
-    this.sources = this.source
-    console.log(this.sources)
+    this.options.sources = this.source
+    this.options.poster = this.poster
   },
   mounted() {
     this.player = videojs(
