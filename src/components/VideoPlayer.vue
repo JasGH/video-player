@@ -15,6 +15,8 @@
         v-model="drawer"
         absolute
         bottom
+        mobile-breakpoint="560"
+        :height="calcTheHeight"
         temporary
     >
       <v-list-item class="px-2">
@@ -149,6 +151,11 @@ export default {
         this.$refs.videoPlayer, this.options, function onPlayerReady() {
           console.log('onPlayerReady', this);
         })
+  },
+  computed:{
+    calcTheHeight(){
+      return '75%'
+    }
   },
   beforeDestroy() {
     if (this.player) {
