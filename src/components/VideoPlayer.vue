@@ -1,9 +1,50 @@
 <template>
   <div>
-    <video ref="videoPlayer" class="video-js vjs-fluid vjs-big-play-centered " ></video>
+
     <v-btn
-        elevation="2"
-    ></v-btn>
+        class="vPlayer-drawer-btn"
+        text
+        icon
+        x-large
+        @click.stop="drawer = true"
+    >
+      <v-icon>mdi-menu</v-icon>
+    </v-btn>
+    <v-navigation-drawer
+        right
+        v-model="drawer"
+        absolute
+        bottom
+        temporary
+    >
+      <v-list-item class="px-2">
+        <v-list-item-title>زمانکوب ها</v-list-item-title>
+        <v-btn
+            icon
+            @click.stop="drawer = false"
+        >
+          <v-icon>mdi-chevron-right</v-icon>
+        </v-btn>
+      </v-list-item>
+      <v-divider></v-divider>
+      <v-list
+          nav
+          dense
+      >
+        <v-list-item-group
+            active-class="deep-purple--text text--accent-4"
+        >
+          <v-list-item
+              v-for="(time,index) in timePoints"
+              :key="index"
+              @click="activate(time.time)"
+          >
+            <v-list-item-title>{{ time.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list-item-group>
+      </v-list>
+    </v-navigation-drawer>
+    <video ref="videoPlayer" class="video-js vjs-fluid vjs-big-play-centered " ></video>
   </div>
 </template>
 
@@ -22,10 +63,34 @@ export default {
       default (){
         return []
       }
+    },
+    timePoints : {
+      type :Array,
+      default (){
+        return [
+          {
+            title : 'تست ۱',
+            time : 18
+          },
+          {
+            title : 'تست ۲',
+            time : 188
+          },
+          {
+            title : 'تست ۳',
+            time : 400
+          },
+          {
+            title : 'تست ۴',
+            time : 800
+          },
+        ]
+      }
     }
   },
     data() {
       return {
+        drawer : false,
         options: {
           controlBar: {
             children: [
@@ -84,12 +149,31 @@ export default {
         this.$refs.videoPlayer, this.options, function onPlayerReady() {
           console.log('onPlayerReady', this);
         })
-    this.player.currentTime()
   },
   beforeDestroy() {
     if (this.player) {
       this.player.dispose()
     }
+  },
+  methods:{
+    activate(time){
+      this.player.currentTime(time)
+    }
   }
 }
 </script>
+
+<style>
+.vPlayer-drawer-btn{
+  position: absolute !important;
+  right: 0 !important;
+  z-index: 10 !important;
+}
+.theme--light.v-navigation-drawer {
+  background-color: #FFFFFF;
+  z-index: 11;
+}
+.vPlayer-drawer-btn-close{
+
+}
+</style>

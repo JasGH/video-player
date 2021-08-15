@@ -1,22 +1,15 @@
 <template>
-  <div>
-    <video-player :source="sources" />
-  </div>
+ <video-player/>
 </template>
 
 <script>
-import VideoPlayer from "@/components/VideoPlayer.vue";
+  import VideoPlayer from "../components/VideoPlayer";
 
+  export default {
+    name: 'Home',
 
-export default {
-  name: "VideoExample",
-  components: {
-    VideoPlayer
-  },
-  data() {
-    return {
-      sources:  []
-    }
+    components: {
+      VideoPlayer,
+    },
   }
-};
 </script>
