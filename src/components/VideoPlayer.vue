@@ -361,7 +361,7 @@ export default {
   height: 100px;
   line-height: 2em;
   top: 48%;
-  margin-left: -0.5em;
+  margin-left: -1em;
   color: #fff;
   opacity: 0.6;
   background-color: #ff8f00;
@@ -369,6 +369,7 @@ export default {
   border-radius:100px;
   -moz-border-radius:100px;
   -webkit-border-radius:100px;
+  margin-top: -0.817em;
 }
 
 #my-video:hover .vjs-big-play-button {
@@ -462,7 +463,7 @@ export default {
    //}
 
 #my-video .vjs-playback-rate  .vjs-menu-content {
-  padding: 11px 0 !important;
+  padding: 3px 0 !important;
   width: 53px;
 }
 
@@ -487,7 +488,7 @@ export default {
 }
 #my-video .vjs-quality-selector .vjs-menu {
   width: 80px;
-  left: 0em;
+  left: 1em;
   height: 0em;
   bottom: 4px;
 }
@@ -520,10 +521,6 @@ export default {
 
 
 /*!*----------- Play/Pause Toggle ----------*!*/
-
-   #my-video .vjs-play-control {
-
-   }
 
 /*!*----------- Fullscreen Toggle ----------*!*/
 
@@ -592,7 +589,7 @@ export default {
      z-index: 1;
      color: #fff;
      display: block;
-     right: -4px;
+     right: -8px;
    }
 
    #my-video .vjs-remaining-time {
@@ -619,6 +616,9 @@ export default {
 .video-js .vjs-volume-panel.vjs-volume-panel-vertical {
   width: 30px;
   padding-top: 2px;
+  position: relative;
+  top: -1px;
+  right: -4px;
 }
 .video-js .vjs-fullscreen-control {
   padding-left: 30px;
@@ -628,7 +628,8 @@ export default {
   padding-right: 40px;
   padding-top: 2px;
   position: relative;
-  top: 2.75px;
+  top: 2px;
+  right: 2px;
 }
 .video-js .vjs-picture-in-picture-control {
   cursor: pointer;
@@ -636,16 +637,20 @@ export default {
   width: 30px !important;
   padding-right: 48px;
   position: relative;
-  top: 2.75px;
+  top: 2px;
+  right: 0;
 
 }
 .video-js .vjs-fullscreen-control {
   width: 25px !important;
   position: relative;
-  top: 2.75px;
+  top: 2px;
+  right: 0;
 }
 .vjs-playback-rate.vjs-menu-button.vjs-menu-button-popup.vjs-control.vjs-button {
   width: 30px;
+  position: relative;
+  right: -5px;
 }
 .vjs-play-control.vjs-control.vjs-button.vjs-paused {
   width: 35px;
@@ -662,6 +667,7 @@ export default {
 //.video-js .vjs-control .vjs-remaining-time{
 //  width: 60px;
 //}
+// -------1264 ------------
 @media screen and (max-width: 708px) {
   #my-video .vjs-playback-rate .vjs-playback-rate-value {
     line-height: 2.75;
@@ -689,6 +695,20 @@ export default {
   }
   #my-video .vjs-current-time{
     right: -4px;
+  }
+  .vPlayer .v-btn:not(.v-btn--round).v-size--default{
+    margin-right: 3px;
+    position: absolute !important;
+    bottom: 16px;
+  }
+  .video-js .vjs-volume-panel.vjs-volume-panel-vertical{
+    right: 0;
+  }
+  .video-js .vjs-fullscreen-control{
+    right: 0px;
+  }
+  #my-video .vjs-quality-selector .vjs-menu{
+    left: 0em;
   }
 }
 @media screen and (max-width: 960px) {}
