@@ -1,5 +1,10 @@
 <template>
+<v-card
+    class="mx-auto"
+    width="1000px"
+  >
  <video-player :source="sources" :time-points="timePoints" :poster="poster"/>
+</v-card>
 </template>
 
 <script>

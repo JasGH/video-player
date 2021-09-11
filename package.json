@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "videojs-contrib-quality-levels": "^2.1.0",
     "videojs-hls-quality-selector": "^1.1.4",
+    "videojs-hotkeys": "^0.2.27",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuetify": "^2.4.0",
